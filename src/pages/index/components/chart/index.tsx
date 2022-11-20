@@ -74,13 +74,7 @@ export default (props: ChartProps) => {
               : undefined
 
           if (series) {
-            const setData = async () => {
-              series.setData(await parameters.getData())
-            }
-
-            setData()
-
-            setInterval(setData, 30000)
+            series.setData(await parameters.getData())
 
             series.applyOptions({
               visible: true,
