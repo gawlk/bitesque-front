@@ -1,26 +1,38 @@
 declare namespace SolidJS {
   export type Accessor<T> = import('solid-js').Accessor<T>
+
   export type Component<T> = import('solid-js').Component<T>
-  export type DeepReadonly<T> = import('solid-js/store').DeepReadonly<T>
+
   export type ParentProps = import('solid-js').ParentProps
 
-  export type JSXElement = import('solid-js').JSXElement
-  export type JSXEventHandlerUnion<T, K> =
-    import('solid-js').JSX.EventHandlerUnion<T, K>
-  export type JSXCSSProperties = import('solid-js').JSX.CSSProperties
-  export type JSXButtonHTMLAttributes =
-    import('solid-js').JSX.ButtonHTMLAttributes<HTMLButtonElement>
-  export type JSXInputHTMLAttributes =
-    import('solid-js').JSX.InputHTMLAttributes<HTMLInputElement>
-  export type JSXSelectHTMLAttributes =
-    import('solid-js').JSX.SelectHTMLAttributes<HTMLSelectElement>
-  export type JSXDetailsHTMLAttributes =
-    import('solid-js').JSX.DetailsHtmlAttributes<HTMLDetailsElement>
-  export type JSXDialogHTMLAttributes =
-    import('solid-js').JSX.DialogHtmlAttributes<HTMLDialogElement>
-}
+  namespace JSX {
+    export type Element = import('solid-js').JSXElement
 
-declare namespace SolidAppRouter {
-  export type LinkProps = import('solid-app-router').LinkProps
-  export type RouteDefinition = import('solid-app-router').RouteDefinition
+    export type EventHandlerUnion<T, K> =
+      import('solid-js').JSX.EventHandlerUnion<T, K>
+
+    export type CSSProperties = import('solid-js').JSX.CSSProperties
+
+    export type HTMLAttributes =
+      import('solid-js').JSX.HTMLAttributes<HTMLElement>
+    export type ButtonHTMLAttributes =
+      import('solid-js').JSX.ButtonHTMLAttributes<HTMLButtonElement>
+    export type InputHTMLAttributes =
+      import('solid-js').JSX.InputHTMLAttributes<HTMLInputElement>
+    export type SelectHTMLAttributes =
+      import('solid-js').JSX.SelectHTMLAttributes<HTMLSelectElement>
+    export type DetailsHTMLAttributes =
+      import('solid-js').JSX.DetailsHtmlAttributes<HTMLDetailsElement>
+    export type DialogHTMLAttributes =
+      import('solid-js').JSX.DialogHtmlAttributes<HTMLDialogElement>
+  }
+
+  namespace Store {
+    export type DeepReadonly<T> = import('solid-js/store').DeepReadonly<T>
+  }
+
+  namespace Router {
+    export type LinkProps = import('@solidjs/router').LinkProps
+    export type RouteDefinition = import('@solidjs/router').RouteDefinition
+  }
 }

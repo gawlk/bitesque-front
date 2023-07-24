@@ -1,7 +1,3 @@
-body {
-  @apply bg-black text-white antialiased selection:bg-orange-200 selection:text-white;
-}
-
 /* Remove details marker */
 details > summary {
   list-style: none;

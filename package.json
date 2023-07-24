@@ -1,38 +1,41 @@
 {
   "name": "bittemp",
-  "description": "Bitcoin Temperature",
+  "description": "Bitboard",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite",
     "build": "vite build",
-    "prod": "vite build && vite preview --host"
+    "prod": "vite build && vite preview"
   },
   "devDependencies": {
-    "@darkobits/vite-plugin-favicons": "^0.1.8",
+    "@darkobits/vite-plugin-favicons": "^0.3.0",
     "@tailwindcss/container-queries": "^0.1.0",
     "@tailwindcss/line-clamp": "^0.4.2",
-    "@trivago/prettier-plugin-sort-imports": "^3.4.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.19",
-    "prettier": "^2.7.1",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
     "prettier-plugin-css-order": "^1.3.0",
     "prettier-plugin-organize-attributes": "^0.0.5",
-    "prettier-plugin-tailwindcss": "0.2.0-beta.1",
-    "tailwindcss": "^3.2.4",
-    "typescript": "^4.8.4",
-    "unplugin-auto-import": "^0.11.4",
-    "unplugin-icons": "^0.14.13",
-    "vite": "^3.2.4",
-    "vite-plugin-pages": "^0.27.1",
-    "vite-plugin-solid": "^2.4.0",
+    "prettier-plugin-tailwindcss": "0.2.2",
+    "rollup-plugin-visualizer": "^5.9.0",
+    "tailwindcss": "^3.2.6",
+    "typescript": "^4.9.5",
+    "unplugin-auto-import": "^0.14.2",
+    "vite": "^4.1.1",
+    "vite-plugin-pages": "^0.28.0",
+    "vite-plugin-pwa": "^0.14.4",
+    "vite-plugin-solid": "^2.5.0",
     "vite-plugin-solid-svg": "^0.6.0"
   },
   "dependencies": {
-    "@solid-primitives/resize-observer": "^2.0.6",
-    "@solidjs/router": "^0.5.0",
-    "colorjs.io": "0.4.1-patch.1",
-    "lightweight-charts": "^3.8.0",
-    "solid-js": "^1.6.2"
+    "@solid-primitives/resize-observer": "^2.0.9",
+    "@solidjs/meta": "^0.28.2",
+    "@solidjs/router": "^0.7.0",
+    "@tabler/icons-solidjs": "^2.4.0",
+    "colorjs.io": "0.4.3",
+    "lightweight-charts": "^4.0.0",
+    "solid-js": "^1.6.11"
   }
 }

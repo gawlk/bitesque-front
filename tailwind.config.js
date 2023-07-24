@@ -9,7 +9,6 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        druk: ['Druk X'],
         sans: [
           'Lexend var',
           ...require('tailwindcss/defaultTheme').fontFamily.sans,

@@ -1,4 +1,5 @@
 /* @refresh reload */
+import { MetaProvider } from '@solidjs/meta'
 import routes from '~solid-pages'
 
 import './styles/main.css'
@@ -13,9 +14,11 @@ if (root) {
 
   render(
     () => (
-      <Router>
-        <Routes />
-      </Router>
+      <MetaProvider>
+        <Router>
+          <Routes />
+        </Router>
+      </MetaProvider>
     ),
     root
   )

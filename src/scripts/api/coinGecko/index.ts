@@ -12,36 +12,55 @@ export const createCoinGeckoAPI = () => {
       },
     }),
     fetchBitcoinMarketChart: async function (parameters: { currency: string }) {
-      let cgDataset = await this.fetchJSON<FetchedCoinGeckoAssetMarketChart>(
+      const dataset = await this.fetchJSON<FetchedCoinGeckoAssetMarketChart>(
         `/coins/bitcoin/market_chart?vs_currency=${
           parameters.currency || 'usd'
         }&days=max&interval=daily`
       )
 
-      const dataset = cgDataset.prices.map(
-        (
-          [timestamp, price]: [number, number],
-          index: number,
-          arr: [number, number][]
-        ): CoinGeckoAssetMarketChart => {
-          const date = new Date(timestamp)
+      let previousDate: Date | undefined
 
-          // Prices are opens we want closes
-          if (index < arr.length - 1) {
-            date.setUTCHours(0, 0, 0, 0)
-            date.setUTCDate(date.getUTCDate() - 1)
+      return dataset.prices
+        .map(
+          (
+            [timestamp, price]: [number, number],
+            index: number,
+            arr: [number, number][]
+          ): CoinGeckoAssetMarketChart[] => {
+            const date = new Date(timestamp)
+
+            // Prices are opens we want closes
+            if (index < arr.length - 1) {
+              date.setUTCHours(0, 0, 0, 0)
+              date.setUTCDate(date.getUTCDate() - 1)
+            }
+
+            const numberOfDaysToFill = previousDate
+              ? (date.getTime() - previousDate.getTime()) / (1000 * 3600 * 24)
+              : 1
+
+            previousDate = date
+
+            return new Array(Math.floor(numberOfDaysToFill))
+              .fill(0)
+              .map((_, _index) => {
+                const _date = new Date(date)
+
+                if (_index) {
+                  _date.setDate(_date.getDate() - _index)
+                }
+
+                return {
+                  time: dateToString(_date),
+                  price,
+                  volume: dataset.total_volumes[index][1] / price,
+                  marketCap: dataset.market_caps[index][1],
+                }
+              })
+              .reverse()
           }
-
-          return {
-            time: dateToString(date),
-            price,
-            volume: cgDataset.total_volumes[index][1] / price,
-            marketCap: cgDataset.market_caps[index][1],
-          }
-        }
-      )
-
-      return dataset
+        )
+        .flat()
     },
   }
 }
